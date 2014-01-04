@@ -1,0 +1,64 @@
+﻿##git-hub的简易教程
+今天研究了一下git怎么使用，我的操作系统是ubuntu 12.04
+###一、在git-hub线上的操作
+首先要注册，具体不介绍了，链接地址:[git-hub.com](https://github.com/)
+
+注册完毕界面是这样的蓝色标注的是你的用户名：
+
+![1](图片1.jpg)
+
+点击红圈标记的按钮，进入这个界面：
+
+![1](图片2.jpg)
+
+按照图片，红圈标记的是需要填写和修改的
+
+修改过后点击create repository 进入这个界面：
+
+![1](图片3.jpg)
+
+这样仓库就建立好了，点击红圈标注的按钮可以复制仓库地址
+
+###二、在本地操作建立git仓库
+
+用户可以通过在线上操作添加文件代码等，但这样很不方便，这种方式修改的效率太低，一般采用的方式均是通过git工具，将代码下载到本地，在本地修改后，然后再上传到github托管的代码库中，方法如下：
+
+首先安装gti的工具，命令如下：
+```
+sudo apt-get install git
+```
+
+之后创建本地git仓库，命令如下
+
+```
+mkdir tmp
+cd tmp
+git init
+touch test.md
+git add test.md
+git commit -am 'commit'  //这里commit是上传的更新记录，记录此次上传更新的内容
+git remote add origin https://github.com/grockcharger/first.git
+git pull origin master
+git push -u origin master
+```
+
+执行完上面的代码后，打开github的first仓库，可以看到first仓库里多了一个test.md文件，上面命令中grockcharger实际输入时要替换成自已的帐户号，在执行上面的命令上传文件时，会要求用户输入自已的用户名与秘密，在输入的过程中，是不显示密码的
+
+1、mkdir tmp 在当前目录下创建一个新的目录tmp
+
+2、cd tmp 切换到tmp目录下
+
+3、git init tmp目录作为一个本地仓库，初始库git库
+
+4、touch test.md 在当前目录下创建了文件 test.md
+
+5、git add test.md 将test.md文件增加到本地git库中
+
+6、git commit -am 'commit' 提交，让上条增加文件命令生效
+
+7、git remote add 向本地仓库中填加远程仓库地址，远程仓库地址别名是origin，这里https的地址就是上面点击按钮可以复制的仓库地址
+
+8、git pull origin master 将orgin所代表的远程仓库地址里的master主干下载到本地仓库，即上传之前先进行一次同步
+
+9、git push -u origin master将本地仓库上传到origin所代表的远程仓库的master分支上
+Edit By [MaHua](http://mahua.jser.me)
